@@ -23,3 +23,9 @@ def crear_guia(request):
 def listar_guias(request):
     guias = GuiaCombustible.objects.filter(usuario=request.user)
     return render(request, 'guias/listar_guias.html', {'guias': guias})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('home')
+    return render(request, 'registration/logout.html')

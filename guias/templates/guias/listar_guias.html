@@ -4,9 +4,44 @@
 
 {% block content %}
   <h2>Mis Guías de Combustible</h2>
-  <ul class="list-group">
-    {% for guia in guias %}
-      <li class="list-group-item">{{ guia.titulo }} - {{ guia.fecha }}</li>
-    {% endfor %}
-  </ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Periodo</th>
+        <th>Fecha</th>
+        <th>Nombre del Conductor</th>
+        <th>Fecha de Carga</th>
+        <th>Guía</th>
+        <th>Patente</th>
+        <th>Estación de Servicio</th>
+        <th>Suministro</th>
+        <th>Kms</th>
+        <th>Consumo</th>
+        <th>Imagen</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for guia in guias %}
+        <tr>
+          <td>{{ guia.periodo }}</td>
+          <td>{{ guia.fecha }}</td>
+          <td>{{ guia.nombre_conductor }}</td>
+          <td>{{ guia.fecha_carga }}</td>
+          <td>{{ guia.guia }}</td>
+          <td>{{ guia.patente }}</td>
+          <td>{{ guia.estacion_servicio }}</td>
+          <td>{{ guia.suministro }}</td>
+          <td>{{ guia.kms }}</td>
+          <td>{{ guia.consumo }}</td>
+          <td>
+            {% if guia.imagen %}
+              <img src="{{ guia.imagen.url }}" alt="Imagen de la guía" style="width: 100px; height: auto;">
+            {% else %}
+              No disponible
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
